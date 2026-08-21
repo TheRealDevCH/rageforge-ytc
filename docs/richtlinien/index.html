@@ -9,130 +9,137 @@
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=30" />
   <style>
     .guide {
       min-height: 100vh;
       color: #fff;
     }
-    .guide-top {
-      padding: 1.4rem 0;
+    .guide-nav {
       position: relative;
-      z-index: 2;
-    }
-    .guide-top .shell {
+      z-index: 3;
+      padding: 1.55rem 0 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .guide-bleed {
+    .guide-hero {
       position: relative;
       isolation: isolate;
-      padding: clamp(3.5rem, 10vh, 7rem) 0 clamp(5rem, 12vh, 8rem);
+      padding: clamp(4rem, 12vh, 8rem) 0 clamp(5rem, 14vh, 9rem);
+      overflow: hidden;
     }
-    .guide-bleed::before {
+    .guide-hero::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -2;
       background: url("assets/atmosphere-field.jpg") center / cover no-repeat;
+      filter: saturate(0.7) contrast(1.05) brightness(0.82);
     }
-    .guide-bleed::after {
+    .guide-hero::after {
       content: "";
       position: absolute;
       inset: 0;
       z-index: -1;
       background:
-        linear-gradient(105deg, rgba(11, 13, 18, 0.92) 0%, rgba(11, 13, 18, 0.7) 48%, rgba(11, 13, 18, 0.42) 100%),
-        linear-gradient(0deg, rgba(11, 13, 18, 0.88), transparent 42%);
+        linear-gradient(105deg, rgba(8, 10, 14, 0.94) 0%, rgba(8, 10, 14, 0.72) 45%, rgba(8, 10, 14, 0.48) 100%),
+        linear-gradient(0deg, rgba(8, 10, 14, 0.88), transparent 40%);
     }
-    .guide h1 {
+    .guide-hero h1 {
       margin: 0;
-      font-family: var(--display);
-      font-size: clamp(3rem, 7.5vw, 5.8rem);
-      letter-spacing: -0.05em;
-      line-height: 0.92;
       max-width: 11ch;
+      font-family: var(--display);
+      font-size: clamp(3.2rem, 8vw, 6.2rem);
       font-weight: 600;
+      letter-spacing: -0.055em;
+      line-height: 0.92;
+    }
+    .guide-body {
+      background: linear-gradient(180deg, #eceef2, #e2e5eb);
+      color: var(--ink);
+      padding: clamp(4rem, 10vh, 7rem) 0;
     }
     .guide-stack {
-      margin-top: 3.2rem;
       display: grid;
-      gap: clamp(2rem, 5vh, 3.2rem);
-      max-width: 58rem;
+      gap: clamp(2.4rem, 5vh, 3.6rem);
+      max-width: 42rem;
     }
     .guide-block h2 {
-      margin: 0 0 0.7rem;
+      margin: 0 0 0.75rem;
       font-family: var(--display);
-      font-size: clamp(1.5rem, 2.6vw, 2rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.55rem, 2.8vw, 2.1rem);
       font-weight: 600;
+      letter-spacing: -0.03em;
     }
     .guide-block p,
     .guide-block li {
       margin: 0;
-      color: rgba(255, 255, 255, 0.72);
+      color: #5b616c;
       font-weight: 300;
-      line-height: 1.6;
+      line-height: 1.65;
       font-size: 1.08rem;
-      max-width: 54ch;
     }
     .guide-block ul {
       margin: 0;
       padding-left: 1.15rem;
     }
-    .guide-block li { margin: 0.4rem 0; }
+    .guide-block li {
+      margin: 0.4rem 0;
+    }
   </style>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <div class="guide">
-    <header class="guide-top">
+    <div class="shell guide-nav">
+      <a class="mark" href="./">
+        <img src="assets/icon.png" width="40" height="40" alt="" />
+        <span>Rageforge</span>
+      </a>
+      <a class="ghost" href="./">Zurück</a>
+    </div>
+
+    <header class="guide-hero">
       <div class="shell">
-        <a class="nav-brand" href="./">
-          <img src="assets/icon.png" width="36" height="36" alt="" />
-          <span>Rageforge</span>
-        </a>
-        <a class="nav-go" href="./">Zurück</a>
+        <p class="kicker light">Richtlinien</p>
+        <h1>Frei. Klar. Nicht zum Verkauf.</h1>
       </div>
     </header>
 
-    <section class="guide-bleed">
-      <div class="shell">
-        <h1>Frei. Klar. Nicht zum Verkauf.</h1>
-        <div class="guide-stack">
-          <article class="guide-block">
-            <h2>Kostenlos für alle</h2>
-            <p>Rageforge YTC ist und bleibt gratis. Nicht verkaufen, nicht vermieten, nicht hinter eine Bezahlschranke stellen. Wer es weitergibt, gibt es weiter wie es ist: frei und ohne Preis.</p>
-          </article>
-          <article class="guide-block">
-            <h2>Kein Verkauf</h2>
-            <ul>
-              <li>Nicht als Produkt verkaufen</li>
-              <li>Keine bezahlten Pakete daraus machen</li>
-              <li>Keine Abo-Modelle darum bauen</li>
-              <li>Keine „Premium-Version“ erfinden, die dasselbe ist</li>
-            </ul>
-          </article>
-          <article class="guide-block">
-            <h2>Fair teilen</h2>
-            <ul>
-              <li>Den Link zur offiziellen Seite teilen</li>
-              <li>Anderen bei der Installation helfen</li>
-              <li>Installer nur von der offiziellen Quelle</li>
-              <li>Name und Autor Rageforge bleiben sichtbar</li>
-            </ul>
-          </article>
-          <article class="guide-block">
-            <h2>Was das ist</h2>
-            <p>Ein Werkzeug für den Alltag. Ein Link, Formate, Download. Gebaut von Rageforge. Für Menschen, nicht für einen Shop.</p>
-          </article>
-          <article class="guide-block">
-            <h2>Kurz gesagt</h2>
-            <p>Rageforge YTC ist nicht zum Verkauf gedacht und soll für alle gratis bleiben. Die offizielle Quelle ist die GitHub-Seite von TheRealDevCH.</p>
-          </article>
-        </div>
+    <section class="guide-body">
+      <div class="shell guide-stack">
+        <article class="guide-block">
+          <h2>Kostenlos für alle</h2>
+          <p>Rageforge YTC ist und bleibt gratis. Nicht verkaufen, nicht vermieten, nicht hinter eine Bezahlschranke stellen. Wer es weitergibt, gibt es weiter wie es ist: frei und ohne Preis.</p>
+        </article>
+        <article class="guide-block">
+          <h2>Kein Verkauf</h2>
+          <ul>
+            <li>Nicht als Produkt verkaufen</li>
+            <li>Keine bezahlten Pakete daraus machen</li>
+            <li>Keine Abo-Modelle darum bauen</li>
+            <li>Keine „Premium-Version“ erfinden, die dasselbe ist</li>
+          </ul>
+        </article>
+        <article class="guide-block">
+          <h2>Fair teilen</h2>
+          <ul>
+            <li>Den Link zur offiziellen Seite teilen</li>
+            <li>Anderen bei der Installation helfen</li>
+            <li>Installer nur von der offiziellen Quelle</li>
+            <li>Name und Autor Rageforge bleiben sichtbar</li>
+          </ul>
+        </article>
+        <article class="guide-block">
+          <h2>Was das ist</h2>
+          <p>Ein Werkzeug für den Alltag. Ein Link, Formate, Download. Gebaut von Rageforge. Für Menschen, nicht für einen Shop.</p>
+        </article>
+        <article class="guide-block">
+          <h2>Kurz gesagt</h2>
+          <p>Rageforge YTC ist nicht zum Verkauf gedacht und soll für alle gratis bleiben. Die offizielle Quelle ist die GitHub-Seite von TheRealDevCH.</p>
+        </article>
       </div>
     </section>
   </div>

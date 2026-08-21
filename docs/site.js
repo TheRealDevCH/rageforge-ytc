@@ -1,32 +1,41 @@
 (() => {
-  const orbs = Array.from(document.querySelectorAll(".orb"));
-  const echo = document.getElementById("orbitEcho");
-  const lanes = Array.from(document.querySelectorAll(".lane"));
-  const panes = Array.from(document.querySelectorAll(".lens-pane"));
+  const rows = Array.from(document.querySelectorAll(".format-row"));
+  const echo = document.getElementById("formatEcho");
+  const steps = Array.from(document.querySelectorAll(".flow-step"));
+  const panels = Array.from(document.querySelectorAll(".flow-panel"));
   const drops = Array.from(document.querySelectorAll("[data-drop]"));
+  const reveals = Array.from(document.querySelectorAll(".reveal"));
 
-  const syncOrbit = () => {
-    const picked = orbs.filter((orb) => orb.classList.contains("is-live")).map((orb) => orb.dataset.fmt);
+  const syncFormats = () => {
+    const picked = rows
+      .filter((row) => row.classList.contains("is-on"))
+      .map((row) => row.dataset.fmt);
     if (echo) {
-      echo.textContent = picked.length ? picked.join(" · ") : "Nichts gewählt.";
+      echo.textContent = picked.length ? picked.join(" · ") : "Nichts gewählt";
     }
   };
 
-  orbs.forEach((orb) => {
-    orb.addEventListener("click", () => {
-      orb.classList.toggle("is-live");
-      orb.setAttribute("aria-pressed", orb.classList.contains("is-live") ? "true" : "false");
-      syncOrbit();
+  rows.forEach((row) => {
+    row.addEventListener("click", () => {
+      row.classList.toggle("is-on");
+      row.setAttribute("aria-pressed", row.classList.contains("is-on") ? "true" : "false");
+      syncFormats();
     });
   });
 
-  const showLane = (index) => {
-    lanes.forEach((lane, i) => lane.classList.toggle("is-on", i === index));
-    panes.forEach((pane) => pane.classList.toggle("is-shown", Number(pane.dataset.pane) === index));
+  const showStep = (index) => {
+    steps.forEach((step, i) => {
+      const on = i === index;
+      step.classList.toggle("is-active", on);
+      step.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+    panels.forEach((panel) => {
+      panel.classList.toggle("is-shown", Number(panel.dataset.panel) === index);
+    });
   };
 
-  lanes.forEach((lane) => {
-    lane.addEventListener("click", () => showLane(Number(lane.dataset.lane)));
+  steps.forEach((step) => {
+    step.addEventListener("click", () => showStep(Number(step.dataset.step)));
   });
 
   drops.forEach((drop) => {
@@ -53,5 +62,22 @@
     });
   });
 
-  syncOrbit();
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+    );
+    reveals.forEach((node) => observer.observe(node));
+  } else {
+    reveals.forEach((node) => node.classList.add("is-in"));
+  }
+
+  syncFormats();
 })();

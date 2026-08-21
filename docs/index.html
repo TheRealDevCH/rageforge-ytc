@@ -4,45 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rageforge YTC</title>
-  <meta name="description" content="Rageforge YTC — YouTube Converter für Windows." />
+  <meta name="description" content="Rageforge YTC — YouTube Converter für Windows. Von Rageforge." />
   <meta name="author" content="Rageforge" />
   <base href="/rageforge-ytc/" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=21" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=30" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
 
   <header class="hero" id="top">
-    <div class="hero-bleed" style="background-image:url('assets/hero-plane.jpg')"></div>
-    <div class="hero-veil"></div>
-    <div class="shell nav">
-      <a class="nav-brand" href="./">
-        <img src="assets/icon.png" alt="" width="36" height="36" />
+    <div class="hero-media" aria-hidden="true">
+      <div class="hero-bleed" style="background-image:url('assets/hero-plane.jpg')"></div>
+      <div class="hero-grade"></div>
+      <div class="hero-veil"></div>
+    </div>
+
+    <nav class="nav shell">
+      <a class="mark" href="./">
+        <img src="assets/icon.png" width="40" height="40" alt="" />
         <span>Rageforge</span>
       </a>
-      <div class="nav-actions">
+      <div class="nav-end">
         <div class="drop drop-end" data-drop>
-          <button class="nav-go" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
-          <div class="drop-panel" role="menu">
+          <button class="ghost" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
+          <div class="menu" role="menu">
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Deutsch</a>
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-en.exe">English</a>
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-fr.exe">Français</a>
           </div>
         </div>
-        <a class="nav-go" href="richtlinien/">Richtlinien</a>
+        <a class="ghost" href="richtlinien/">Richtlinien</a>
       </div>
-    </div>
-    <div class="shell hero-copy">
-      <h1>Rageforge<br />YTC</h1>
-      <p>Link rein. Formate wählen. Mehrere Versionen laden.</p>
-      <div class="cta">
+    </nav>
+
+    <div class="hero-stage shell">
+      <h1 class="hero-brand">
+        <span>Rageforge</span>
+        <span>YTC</span>
+      </h1>
+      <p class="hero-line">Ein Link. Die Formate, die du willst. Mehrere Versionen auf einmal.</p>
+      <div class="hero-cta">
         <div class="drop" data-drop>
-          <button class="btn btn-solid" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
-          <div class="drop-panel" role="menu">
+          <button class="solid" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
+          <div class="menu" role="menu">
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Deutsch</a>
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-en.exe">English</a>
             <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-fr.exe">Français</a>
@@ -53,64 +61,94 @@
   </header>
 
   <main>
-    <section class="chapter experience" id="experience">
-      <div class="shell">
-        <h2>Formate.</h2>
-      </div>
-      <div class="orbit shell" id="orbit">
-        <button class="orb is-live" type="button" data-fmt="MP4" aria-pressed="true"><span>MP4</span><em>Video</em></button>
-        <button class="orb" type="button" data-fmt="WEBM" aria-pressed="false"><span>WEBM</span><em>Video</em></button>
-        <button class="orb is-live" type="button" data-fmt="MP3" aria-pressed="true"><span>MP3</span><em>Audio</em></button>
-        <button class="orb" type="button" data-fmt="M4A" aria-pressed="false"><span>M4A</span><em>Audio</em></button>
-      </div>
-      <p class="orbit-echo shell" id="orbitEcho">MP4 · MP3</p>
+    <section class="statement" aria-label="Essenz">
+      <div class="statement-media" style="background-image:url('assets/atmosphere-field.jpg')" aria-hidden="true"></div>
+      <div class="statement-veil" aria-hidden="true"></div>
+      <p class="statement-copy reveal">Gebaut wie ein Werkzeug, das man behalten will — nicht wie Software, die man erträgt.</p>
     </section>
 
-    <section class="chapter ritual" id="ritual">
-      <div class="shell ritual-head">
-        <h2>Drei Schritte.</h2>
+    <section class="formats" id="formate">
+      <div class="shell formats-head reveal">
+        <p class="kicker">Auswahl</p>
+        <h2>Formate.</h2>
       </div>
-      <div class="lanes">
-        <button class="lane is-on" type="button" data-lane="0">
-          <span class="lane-index">01</span>
-          <span class="lane-title">Link</span>
-          <span class="lane-copy">YouTube-Adresse einfügen.</span>
+      <div class="format-wall shell" id="formatWall" role="group" aria-label="Formate">
+        <button class="format-row is-on" type="button" data-fmt="MP4" aria-pressed="true">
+          <span class="format-name">MP4</span>
+          <span class="format-kind">Video</span>
         </button>
-        <button class="lane" type="button" data-lane="1">
-          <span class="lane-index">02</span>
-          <span class="lane-title">Auswahl</span>
-          <span class="lane-copy">Ein Format oder mehrere.</span>
+        <button class="format-row" type="button" data-fmt="WEBM" aria-pressed="false">
+          <span class="format-name">WEBM</span>
+          <span class="format-kind">Video</span>
         </button>
-        <button class="lane" type="button" data-lane="2">
-          <span class="lane-index">03</span>
-          <span class="lane-title">Fertig</span>
-          <span class="lane-copy">Setup. Fertig.</span>
+        <button class="format-row is-on" type="button" data-fmt="MP3" aria-pressed="true">
+          <span class="format-name">MP3</span>
+          <span class="format-kind">Audio</span>
+        </button>
+        <button class="format-row" type="button" data-fmt="M4A" aria-pressed="false">
+          <span class="format-name">M4A</span>
+          <span class="format-kind">Audio</span>
         </button>
       </div>
-      <div class="lens shell" aria-live="polite">
-        <article class="lens-pane is-shown" data-pane="0">
-          <h3>Adresse rein.</h3>
-          <p class="lens-line">https://www.youtube.com/watch?v=…</p>
-        </article>
-        <article class="lens-pane" data-pane="1">
-          <h3>Mehrere auf einmal.</h3>
-          <p class="lens-line">MP4 · WEBM · MP3 · M4A</p>
-        </article>
-        <article class="lens-pane" data-pane="2">
-          <h3>Ein Setup.</h3>
-          <div class="drop" data-drop>
-            <button class="btn btn-light" type="button" aria-expanded="false" aria-haspopup="true">Installer wählen</button>
-            <div class="drop-panel" role="menu">
-              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Deutsch</a>
-              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-en.exe">English</a>
-              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-fr.exe">Français</a>
+      <p class="format-echo shell" id="formatEcho">MP4 · MP3</p>
+    </section>
+
+    <section class="flow" id="ablauf">
+      <div class="shell flow-head reveal">
+        <p class="kicker">Ablauf</p>
+        <h2>Drei Bewegungen.</h2>
+      </div>
+
+      <div class="flow-board">
+        <aside class="flow-rail" aria-label="Schritte">
+          <button class="flow-step is-active" type="button" data-step="0" aria-pressed="true">
+            <span class="flow-num">01</span>
+            <span class="flow-label">Link</span>
+          </button>
+          <button class="flow-step" type="button" data-step="1" aria-pressed="false">
+            <span class="flow-num">02</span>
+            <span class="flow-label">Auswahl</span>
+          </button>
+          <button class="flow-step" type="button" data-step="2" aria-pressed="false">
+            <span class="flow-num">03</span>
+            <span class="flow-label">Fertig</span>
+          </button>
+        </aside>
+
+        <div class="flow-stage" aria-live="polite">
+          <article class="flow-panel is-shown" data-panel="0">
+            <h3>Die Adresse reicht.</h3>
+            <p>YouTube-Link einfügen. Kein Konto. Kein Theater.</p>
+            <p class="flow-sample">https://www.youtube.com/watch?v=…</p>
+          </article>
+          <article class="flow-panel" data-panel="1">
+            <h3>Mehrere Wege gleichzeitig.</h3>
+            <p>MP4, WEBM, MP3, M4A — einzeln oder zusammen.</p>
+          </article>
+          <article class="flow-panel" data-panel="2">
+            <h3>Ein Setup. Dann Ruhe.</h3>
+            <p>Nur die EXE. Sprache hier wählen.</p>
+            <div class="drop" data-drop>
+              <button class="solid solid-ink" type="button" aria-expanded="false" aria-haspopup="true">Installer wählen</button>
+              <div class="menu menu-ink" role="menu">
+                <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Deutsch</a>
+                <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-en.exe">English</a>
+                <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-fr.exe">Français</a>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="signature" aria-label="Abschluss">
+      <div class="shell signature-inner reveal">
+        <p>Rageforge</p>
+        <span>YTC · Windows</span>
       </div>
     </section>
   </main>
 
-  <script src="site.js?v=21"></script>
+  <script src="site.js?v=30"></script>
 </body>
 </html>

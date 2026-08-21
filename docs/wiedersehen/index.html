@@ -9,28 +9,80 @@
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=30" />
   <style>
-    body{margin:0;background:#07090c;color:#fff;font-family:"Jost",sans-serif}
-    .page-bye{min-height:100vh;display:grid;place-items:center;padding:2rem}
-    .bye-card{width:min(720px,100%);padding:3rem;border-radius:36px;text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px)}
-    .bye-card h1{font-family:"Syne",sans-serif;font-size:clamp(2.2rem,6vw,3.8rem);letter-spacing:-.045em;margin:.5rem 0 0}
-    .eyebrow{font-family:"Syne",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9ec9ff;font-weight:600}
-    .cta{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
-    .btn{display:inline-flex;align-items:center;min-height:3.5rem;padding:0 1.55rem;border-radius:16px;font-family:"Syne",sans-serif;font-weight:700;text-decoration:none}
-    .btn-solid{background:#fff;color:#0b0d10}.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.35)}
+    .bye {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+      color: #fff;
+      padding: 2rem;
+    }
+    .bye::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/hero-plane.jpg") center / cover no-repeat;
+      filter: saturate(0.7) contrast(1.05) brightness(0.75);
+    }
+    .bye::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(8, 10, 14, 0.55), rgba(8, 10, 14, 0.88));
+    }
+    .bye-inner {
+      width: min(520px, 100%);
+      text-align: left;
+    }
+    .bye-inner img {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      margin-bottom: 1.6rem;
+    }
+    .bye-inner h1 {
+      margin: 0.4rem 0 0;
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 600;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      max-width: 12ch;
+    }
+    .bye-inner p {
+      margin: 1.1rem 0 0;
+      max-width: 28ch;
+      color: rgba(255, 255, 255, 0.68);
+      font-weight: 300;
+      font-size: 1.15rem;
+    }
+    .bye-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
   </style>
 </head>
-<body class="page-bye">
-  <main class="bye-card">
-    <img src="assets/icon.png" width="84" height="84" alt="Rageforge YTC" />
-    <p class="eyebrow">Rageforge YTC</p>
-    <h1>Hoffentlich kommst du bald wieder</h1>
-    <p>Die Deinstallation ist durch. Wenn du zurückkommst, steht die Tür offen.</p>
-    <div class="cta">
-      <a class="btn btn-solid" href="./">Zur Startseite</a>
-      <a class="btn btn-ghost" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Erneut installieren</a>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="bye">
+    <div class="bye-inner">
+      <img src="assets/icon.png" alt="" width="56" height="56" />
+      <p class="kicker light">Rageforge YTC</p>
+      <h1>Hoffentlich kommst du bald wieder.</h1>
+      <p>Die Deinstallation ist durch. Wenn du zurückkommst, steht die Tür offen.</p>
+      <div class="bye-actions">
+        <a class="solid" href="./">Zur Startseite</a>
+        <a class="ghost" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Erneut installieren</a>
+      </div>
     </div>
   </main>
 </body>
