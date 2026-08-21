@@ -6,11 +6,76 @@
   <title>Rageforge YTC</title>
   <meta name="description" content="Rageforge YTC — YouTube Converter für Windows. Kostenlos herunterladen." />
   <meta name="author" content="Rageforge" />
+  <base href="/rageforge-ytc/" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
+  <style>
+    :root{--bg:#f3f1ec;--ink:#1a1a1a;--soft:#5c5c5c;--line:rgba(26,26,26,.1);--blue:#0a84ff;--blue-deep:#0066cc;--display:"Outfit",sans-serif;--body:"Work Sans",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.55;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+    .world{position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(60% 45% at 18% 12%,rgba(10,132,255,.22),transparent 58%),radial-gradient(50% 40% at 82% 18%,rgba(217,239,232,.7),transparent 55%),linear-gradient(165deg,#eef3f9 0%,#f3f1ec 48%,#e8e4db 100%)}
+    .topbar{width:min(1280px,calc(100% - 3rem));margin:0 auto;padding:1.4rem 0;display:flex;justify-content:space-between;align-items:center}
+    .mark{display:inline-flex;gap:.85rem;align-items:center;font-family:var(--display);font-weight:700}
+    .mark img{border-radius:12px;width:44px;height:44px}
+    .top-link{padding:.85rem 1.25rem;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.7)}
+    .hero{width:min(1280px,calc(100% - 3rem));margin:0 auto;min-height:calc(100vh - 96px);display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding:2vh 0 8vh}
+    .brand-signal{margin:0 0 .75rem;font-family:var(--display);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep)}
+    .hero h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,9vw,7.2rem);line-height:.92;letter-spacing:-.055em}
+    .lede{margin:1.4rem 0 0;max-width:18ch;font-size:clamp(1.25rem,2.2vw,1.7rem);color:var(--soft)}
+    .cta-group{margin-top:2.2rem;display:flex;flex-wrap:wrap;gap:.85rem}
+    .btn-main,.btn-soft{display:inline-flex;align-items:center;justify-content:center;min-height:3.4rem;padding:0 1.5rem;border-radius:16px;font-family:var(--display);font-weight:700;cursor:pointer}
+    .btn-main{background:var(--blue);color:#fff}.btn-soft{background:rgba(255,255,255,.8);border:1px solid var(--line)}
+    .hero-plane{position:relative;min-height:clamp(420px,62vh,640px)}
+    .plane-wash{position:absolute;inset:8% -8% -8% 8%;border-radius:40px;background:linear-gradient(145deg,rgba(10,132,255,.18),transparent 45%),linear-gradient(30deg,#fff,#e7eef8);transform:rotate(2.5deg)}
+    .plane-window{position:absolute;inset:0;border-radius:32px;overflow:hidden;background:rgba(255,255,255,.85);border:1px solid rgba(26,26,26,.08);box-shadow:0 30px 80px rgba(26,26,26,.12)}
+    .plane-chrome{display:flex;align-items:center;gap:.45rem;padding:1rem 1.2rem;border-bottom:1px solid var(--line);background:rgba(255,255,255,.75);font-family:var(--display);color:var(--soft)}
+    .plane-chrome i{width:10px;height:10px;border-radius:50%;background:#d0d0d0;display:inline-block}
+    .plane-screen{padding:2rem;background:linear-gradient(180deg,#f4fbfd,#fff 55%);min-height:360px}
+    .plane-brand{font-family:var(--display);font-size:2rem;font-weight:800;color:#0f3d4d}
+    .plane-bar{margin-top:1rem;height:14px;width:72%;border-radius:999px;background:rgba(10,132,255,.16)}
+    .plane-media{margin-top:1.6rem;height:140px;border-radius:20px;background:linear-gradient(125deg,rgba(10,132,255,.75),rgba(56,189,248,.55))}
+    .plane-tracks{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:.6rem}
+    .plane-tracks span{padding:.7rem 1rem;border-radius:12px;background:#f2f8fb;border:1px solid rgba(10,132,255,.14);font-family:var(--display);font-weight:700;color:#17485a}
+    .plane-tracks .on{background:#0a84ff;color:#fff;border-color:transparent}
+    .plane-action{margin-top:1.4rem;height:52px;border-radius:14px;background:#1f9d57}
+    .story,.promise{width:min(1280px,calc(100% - 3rem));margin:0 auto;padding:8vh 0}
+    .story-head h2,.promise h2,.finale h2{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,6vw,4.6rem);letter-spacing:-.04em;line-height:1.02}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:2rem 0 1.25rem}
+    .flow-step{text-align:left;min-height:220px;padding:1.6rem;border-radius:28px;border:1px solid var(--line);background:rgba(255,255,255,.7);cursor:pointer}
+    .flow-step.is-active{background:#fff;border-color:rgba(10,132,255,.35);box-shadow:0 18px 40px rgba(10,132,255,.12)}
+    .flow-num{display:block;font-family:var(--display);color:var(--blue-deep);margin-bottom:1.2rem;letter-spacing:.08em}
+    .flow-title{display:block;font-family:var(--display);font-size:1.7rem;font-weight:800;margin-bottom:.7rem}
+    .flow-text{display:block;color:var(--soft)}
+    .stage-board{position:relative;min-height:420px;border-radius:36px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#fff,#e7eef8)}
+    .stage-panel{position:absolute;inset:0;padding:2.5rem;opacity:0;pointer-events:none}
+    .stage-panel.is-visible{opacity:1;pointer-events:auto}
+    .stage-kicker{margin:0 0 .6rem;font-family:var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--blue-deep);font-weight:700}
+    .stage-panel h3{margin:0 0 1.5rem;font-family:var(--display);font-size:clamp(2rem,4.5vw,3.4rem);letter-spacing:-.04em}
+    .fake-url{display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:88px;padding:1rem 1.2rem;border-radius:20px;background:#fff;border:1px solid var(--line);color:var(--soft)}
+    .fake-url em{font-style:normal;color:#fff;background:var(--blue);padding:.85rem 1.15rem;border-radius:14px;font-family:var(--display);font-weight:700}
+    .format-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem}
+    .format-hit{min-height:120px;border-radius:24px;border:1px solid var(--line);background:#fff;font-family:var(--display);font-size:2rem;font-weight:800;cursor:pointer}
+    .format-hit.is-on{background:var(--blue);color:#fff;border-color:transparent}
+    .mega-download{display:grid;gap:.35rem;width:min(100%,640px);padding:1.8rem;border-radius:28px;background:#1a1a1a;color:#fff}
+    .mega-label{color:rgba(255,255,255,.62);text-transform:uppercase;letter-spacing:.06em;font-family:var(--display)}
+    .mega-name{font-family:var(--display);font-size:2rem;font-weight:800}
+    .mega-go{margin-top:.7rem;color:#7ec2ff;font-family:var(--display);font-weight:700}
+    .promise-rail{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+    .promise-block{min-height:280px;padding:2rem;border-radius:32px;text-align:left;border:1px solid var(--line);cursor:pointer}
+    .promise-block[data-tone="a"]{background:linear-gradient(160deg,#fff,#e7eef8)}
+    .promise-block[data-tone="b"]{background:linear-gradient(160deg,#fff,#d9efe8)}
+    .promise-block[data-tone="c"]{background:linear-gradient(160deg,#fff,#ebe6dc)}
+    .promise-block strong{display:block;font-family:var(--display);font-size:2.6rem;margin-bottom:1rem}
+    .promise-block span{color:var(--soft)}
+    .finale{padding:0 1.5rem 10vh}
+    .finale-inner{width:min(1280px,100%);margin:0 auto;min-height:52vh;display:grid;place-content:center;text-align:center;gap:.9rem;padding:4rem;border-radius:40px;background:radial-gradient(80% 80% at 50% 0%,rgba(10,132,255,.18),transparent 55%),linear-gradient(180deg,#fff,#eef3f8);border:1px solid var(--line)}
+    .finale-inner .btn-main{justify-self:center}
+    .foot{width:min(1280px,calc(100% - 3rem));margin:0 auto;padding:1.5rem 0 2.5rem;display:flex;gap:1.5rem;color:var(--soft);border-top:1px solid var(--line)}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.hero-plane{order:-1;min-height:420px}.flow,.promise-rail,.format-wall{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
   <div class="world" aria-hidden="true">
@@ -34,30 +99,20 @@
         <h1>Rageforge YTC</h1>
         <p class="lede">Ein Link. Viele Formate. Fertig auf dem Desktop.</p>
         <div class="cta-group" id="holen">
-          <a class="btn-main" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
-            Installer holen
-          </a>
-          <a class="btn-soft" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC.exe">
-            Nur EXE
-          </a>
+          <a class="btn-main" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Installer holen</a>
+          <a class="btn-soft" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC.exe">Nur EXE</a>
         </div>
       </div>
       <div class="hero-plane" aria-hidden="true">
         <div class="plane-wash"></div>
         <div class="plane-window">
-          <div class="plane-chrome">
-            <i></i><i></i><i></i>
-            <span>Rageforge YTC</span>
-          </div>
+          <div class="plane-chrome"><i></i><i></i><i></i><span>Rageforge YTC</span></div>
           <div class="plane-screen">
             <div class="plane-brand">Rageforge YTC</div>
             <div class="plane-bar"></div>
             <div class="plane-media"></div>
             <div class="plane-tracks">
-              <span class="on">MP4</span>
-              <span>WEBM</span>
-              <span class="on">MP3</span>
-              <span>M4A</span>
+              <span class="on">MP4</span><span>WEBM</span><span class="on">MP3</span><span>M4A</span>
             </div>
             <div class="plane-action"></div>
           </div>
@@ -70,7 +125,6 @@
         <h2>So fühlt sich der Ablauf an.</h2>
         <p>Tippe die grossen Felder an. Sie reagieren wie in der App.</p>
       </div>
-
       <div class="flow" role="list">
         <button class="flow-step is-active" type="button" role="listitem" data-step="0" aria-pressed="true">
           <span class="flow-num">01</span>
@@ -88,15 +142,11 @@
           <span class="flow-text">Der Installer legt nur die EXE ab. Sauber und klar.</span>
         </button>
       </div>
-
       <div class="stage-board" aria-live="polite">
         <div class="stage-panel is-visible" data-panel="0">
           <p class="stage-kicker">Schritt</p>
           <h3>Dein Link ist genug.</h3>
-          <div class="fake-url" tabindex="0">
-            <span>https://www.youtube.com/watch?v=…</span>
-            <em>Analysieren</em>
-          </div>
+          <div class="fake-url" tabindex="0"><span>https://www.youtube.com/watch?v=…</span><em>Analysieren</em></div>
         </div>
         <div class="stage-panel" data-panel="1">
           <p class="stage-kicker">Auswahl</p>
@@ -124,18 +174,9 @@
     <section class="promise">
       <h2>Gross genug für den Alltag.</h2>
       <div class="promise-rail">
-        <button type="button" class="promise-block" data-tone="a">
-          <strong>Gratis</strong>
-          <span>Kein Abo. Kein Account. Einfach nutzen.</span>
-        </button>
-        <button type="button" class="promise-block" data-tone="b">
-          <strong>Klar</strong>
-          <span>Wenige Schritte. Keine Ablenkung.</span>
-        </button>
-        <button type="button" class="promise-block" data-tone="c">
-          <strong>Dein Desktop</strong>
-          <span>Installer setzt die App hin, wo du sie brauchst.</span>
-        </button>
+        <button type="button" class="promise-block" data-tone="a"><strong>Gratis</strong><span>Kein Abo. Kein Account. Einfach nutzen.</span></button>
+        <button type="button" class="promise-block" data-tone="b"><strong>Klar</strong><span>Wenige Schritte. Keine Ablenkung.</span></button>
+        <button type="button" class="promise-block" data-tone="c"><strong>Dein Desktop</strong><span>Installer setzt die App hin, wo du sie brauchst.</span></button>
       </div>
     </section>
 
@@ -155,6 +196,6 @@
     <a href="wiedersehen/">Wiedersehen</a>
   </footer>
 
-  <script src="site.js"></script>
+  <script src="site.js?v=3"></script>
 </body>
 </html>

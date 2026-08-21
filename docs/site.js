@@ -53,19 +53,13 @@
       (entries) => {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
-          entry.target.style.opacity = "1";
-          entry.target.style.transform = "translateY(0)";
+          entry.target.classList.add("is-in");
           observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.12 }
     );
-    targets.forEach((el) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(28px)";
-      el.style.transition = "opacity 700ms ease, transform 700ms ease";
-      observer.observe(el);
-    });
+    targets.forEach((el) => observer.observe(el));
   }
 
   syncFormats();

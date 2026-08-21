@@ -5,11 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wiedersehen · Rageforge YTC</title>
   <meta name="author" content="Rageforge" />
-  <link rel="icon" href="../assets/icon.png" type="image/png" />
+  <base href="/rageforge-ytc/" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="styles.css?v=3" />
+  <style>
+    body{margin:0;background:#f3f1ec;font-family:"Work Sans",sans-serif;color:#1a1a1a}
+    .world{position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 45% at 50% 0%,rgba(10,132,255,.18),transparent 58%),linear-gradient(180deg,#eef3f9,#f3f1ec)}
+    .bye-shell{width:min(720px,calc(100% - 2rem));margin:10vh auto;padding:3rem;border-radius:36px;background:rgba(255,255,255,.88);border:1px solid rgba(26,26,26,.1);text-align:center}
+    .bye-shell h1{font-family:"Outfit",sans-serif;font-size:clamp(2.2rem,6vw,3.6rem);letter-spacing:-.04em}
+    .brand-signal{font-family:"Outfit",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#0066cc;font-weight:700}
+    .cta-group{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;margin-top:1.8rem}
+    .btn-main,.btn-soft{display:inline-flex;align-items:center;min-height:3.4rem;padding:0 1.5rem;border-radius:16px;font-family:"Outfit",sans-serif;font-weight:700;text-decoration:none}
+    .btn-main{background:#0a84ff;color:#fff}.btn-soft{background:#fff;border:1px solid rgba(26,26,26,.1);color:#1a1a1a}
+  </style>
 </head>
 <body class="page-bye">
   <div class="world" aria-hidden="true">
@@ -17,12 +28,12 @@
     <div class="world-grid"></div>
   </div>
   <main class="bye-shell">
-    <img src="../assets/icon.png" width="84" height="84" alt="Rageforge YTC" />
+    <img src="assets/icon.png" width="84" height="84" alt="Rageforge YTC" />
     <p class="brand-signal">Rageforge YTC</p>
     <h1>Hoffentlich kommst du bald wieder</h1>
     <p class="lede">Die Deinstallation ist durch. Wenn du Lust hast, bist du jederzeit wieder willkommen.</p>
-    <div class="cta-group" style="justify-content:center;margin-top:1.8rem">
-      <a class="btn-main" href="../">Zur Startseite</a>
+    <div class="cta-group">
+      <a class="btn-main" href="./">Zur Startseite</a>
       <a class="btn-soft" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Erneut installieren</a>
     </div>
   </main>
