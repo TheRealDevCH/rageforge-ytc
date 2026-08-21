@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Richtlinien · Rageforge YTC</title>
+  <meta name="author" content="Rageforge" />
+  <base href="/rageforge-ytc/" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20" />
+  <style>
+    body{margin:0;background:#07090c;color:#fff;font-family:"Jost",sans-serif}
+    .guide{min-height:100vh;display:grid;grid-template-rows:auto 1fr}
+    .guide-top{padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .guide-top .shell{display:flex;justify-content:space-between;align-items:center}
+    .guide-back{padding:.85rem 1.2rem;border:1px solid rgba(255,255,255,.28);border-radius:16px;color:#fff}
+    .guide-bleed{position:relative;isolation:isolate;padding:clamp(3rem,8vh,6rem) 0 clamp(4rem,10vh,8rem)}
+    .guide-bleed::before{content:"";position:absolute;inset:0;z-index:-1;background:url("assets/atmosphere-field.jpg") center/cover no-repeat}
+    .guide-bleed::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,9,12,.92),rgba(7,9,12,.55) 55%,rgba(7,9,12,.35)),linear-gradient(0deg,rgba(7,9,12,.85),transparent 40%)}
+    .guide h1{margin:0;font-family:"Syne",sans-serif;font-size:clamp(3rem,8vw,6.5rem);letter-spacing:-.05em;line-height:.92;max-width:12ch}
+    .guide-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem;margin-top:2.5rem}
+    .panel{padding:clamp(1.4rem,3vw,2.2rem);border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);min-height:220px}
+    .panel.wide{grid-column:1 / -1;min-height:260px}
+    .panel h2{margin:0 0 1rem;font-family:"Syne",sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.03em}
+    .panel p,.panel li{color:rgba(255,255,255,.78);font-weight:300;line-height:1.55;font-size:1.08rem}
+    .panel ul{margin:0;padding-left:1.2rem}
+    .panel li{margin:.45rem 0}
+    @media (max-width:900px){.guide-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="guide">
+    <header class="guide-top">
+      <div class="shell">
+        <a class="nav-brand" href="./" style="display:inline-flex;gap:.9rem;align-items:center;font-family:Syne,sans-serif;font-weight:700;color:#fff;text-decoration:none">
+          <img src="assets/icon.png" width="42" height="42" alt="" style="border-radius:12px" />
+          <span>Rageforge YTC</span>
+        </a>
+        <a class="guide-back" href="./">Zurück</a>
+      </div>
+    </header>
+
+    <section class="guide-bleed">
+      <div class="shell">
+        <p class="eyebrow light" style="margin:0 0 1rem;font-family:Syne,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9ec9ff;font-weight:600">Richtlinien</p>
+        <h1>Frei. Klar. Nicht zum Verkauf.</h1>
+        <div class="guide-grid">
+          <article class="panel wide">
+            <h2>Kostenlos für alle</h2>
+            <p>Rageforge YTC ist und bleibt gratis. Es ist nicht dazu gedacht, verkauft, vermietet oder hinter eine Bezahlschranke gestellt zu werden. Wer das Programm weitergibt, gibt es weiter wie es ist: frei und ohne Preis.</p>
+          </article>
+          <article class="panel">
+            <h2>Kein Verkauf</h2>
+            <ul>
+              <li>Nicht als Produkt verkaufen</li>
+              <li>Keine bezahlten Pakete daraus machen</li>
+              <li>Keine Abo-Modelle darum bauen</li>
+              <li>Keine „Premium-Version“ erfinden, die dasselbe ist</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h2>Fair teilen</h2>
+            <ul>
+              <li>Du darfst den Link zur offiziellen Seite teilen</li>
+              <li>Du darfst anderen helfen, es zu installieren</li>
+              <li>Der Installer soll von der offiziellen Quelle kommen</li>
+              <li>Name und Autor Rageforge bleiben sichtbar</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h2>Was das Projekt ist</h2>
+            <p>Ein Werkzeug für den Alltag. Ein Link, Formate, Download. Gebaut von Rageforge. Gedacht für Menschen, nicht für einen Shop.</p>
+          </article>
+          <article class="panel">
+            <h2>Was wir erwarten</h2>
+            <p>Respekt vor der Idee: frei bleiben. Wenn du das Projekt magst, erzähl davon. Verkauf es nicht. Verpacke es nicht als Ware.</p>
+          </article>
+          <article class="panel wide">
+            <h2>Kurz gesagt</h2>
+            <p>Rageforge YTC ist nicht zum Verkauf gedacht und soll für alle gratis bleiben. Punkt. Wer es anders darstellt, handelt gegen diese Richtlinien. Die offizielle Quelle ist die GitHub-Seite von TheRealDevCH.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -33,6 +33,138 @@ def resource_path(name: str) -> Path:
     return base / name
 
 
+STRINGS = {
+    "de": {
+        "subtitle": "YouTube-Link einfügen, Formate wählen, mehrere Versionen laden.",
+        "url_label": "YouTube-URL",
+        "analyze": "Analysieren",
+        "no_video": "Noch kein Video geladen",
+        "hint": "Füge einen Link ein und klicke auf Analysieren.",
+        "formats": "Formate",
+        "folder": "Ordner wählen",
+        "all": "Alle",
+        "none": "Keine",
+        "target": "Ziel: {path}",
+        "download": "Auswahl herunterladen",
+        "ready": "Bereit.",
+        "empty": "Nach der Analyse erscheinen hier MP4, WEBM, MP3 und M4A.",
+        "need_url": "Bitte einen YouTube-Link einfügen.",
+        "analyzing": "Analysiere Video…",
+        "done_formats": "Fertig. {count} Versionen verfügbar.",
+        "analyze_fail": "Analyse fehlgeschlagen: {error}",
+        "need_analyze": "Zuerst ein Video analysieren.",
+        "need_select": "Mindestens ein Format auswählen.",
+        "need_ffmpeg": "Für MP3/Merge wird ffmpeg benötigt. Bitte ffmpeg installieren.",
+        "loading": "Lade {count} Datei(en)…",
+        "dl_item": "Download {i}/{t}: {label}",
+        "finished": "Fertig. Gespeichert in: {path}",
+        "dl_fail": "Download fehlgeschlagen: {error}",
+        "blocked_403": "YouTube hat diesen Stream blockiert (403). Nutze „MP4 · Empfohlen · bis 1080p“ oder „Beste Qualität“.",
+        "unknown": "Unbekanntes Video",
+        "formats_count": "{channel}  ·  {mins}:{secs:02d}  ·  {count} Formate",
+        "mp4_best": "MP4 · Empfohlen · Beste Qualität (Auto-Merge)",
+        "mp4_1080": "MP4 · Empfohlen · bis 1080p (stabil)",
+        "mp3_best": "MP3 · Audio (beste Qualität)",
+        "mp3_192": "MP3 · Audio 192kbps",
+        "video_only": "nur Video (+Audio Merge)",
+        "video_audio": "Video+Audio",
+    },
+    "en": {
+        "subtitle": "Paste a YouTube link, pick formats, download multiple versions.",
+        "url_label": "YouTube URL",
+        "analyze": "Analyze",
+        "no_video": "No video loaded yet",
+        "hint": "Paste a link and click Analyze.",
+        "formats": "Formats",
+        "folder": "Choose folder",
+        "all": "All",
+        "none": "None",
+        "target": "Target: {path}",
+        "download": "Download selection",
+        "ready": "Ready.",
+        "empty": "After analysis, MP4, WEBM, MP3 and M4A will appear here.",
+        "need_url": "Please paste a YouTube link.",
+        "analyzing": "Analyzing video…",
+        "done_formats": "Done. {count} versions available.",
+        "analyze_fail": "Analysis failed: {error}",
+        "need_analyze": "Analyze a video first.",
+        "need_select": "Select at least one format.",
+        "need_ffmpeg": "MP3/merge needs ffmpeg. Please install ffmpeg.",
+        "loading": "Downloading {count} file(s)…",
+        "dl_item": "Download {i}/{t}: {label}",
+        "finished": "Done. Saved to: {path}",
+        "dl_fail": "Download failed: {error}",
+        "blocked_403": "YouTube blocked this stream (403). Use “MP4 · Recommended · up to 1080p” or “Best quality”.",
+        "unknown": "Unknown video",
+        "formats_count": "{channel}  ·  {mins}:{secs:02d}  ·  {count} formats",
+        "mp4_best": "MP4 · Recommended · Best quality (auto-merge)",
+        "mp4_1080": "MP4 · Recommended · up to 1080p (stable)",
+        "mp3_best": "MP3 · Audio (best quality)",
+        "mp3_192": "MP3 · Audio 192kbps",
+        "video_only": "video only (+audio merge)",
+        "video_audio": "Video+Audio",
+    },
+    "fr": {
+        "subtitle": "Collez un lien YouTube, choisissez les formats, téléchargez plusieurs versions.",
+        "url_label": "URL YouTube",
+        "analyze": "Analyser",
+        "no_video": "Aucune vidéo chargée",
+        "hint": "Collez un lien et cliquez sur Analyser.",
+        "formats": "Formats",
+        "folder": "Choisir le dossier",
+        "all": "Tous",
+        "none": "Aucun",
+        "target": "Cible : {path}",
+        "download": "Télécharger la sélection",
+        "ready": "Prêt.",
+        "empty": "Après l’analyse, MP4, WEBM, MP3 et M4A apparaissent ici.",
+        "need_url": "Veuillez coller un lien YouTube.",
+        "analyzing": "Analyse de la vidéo…",
+        "done_formats": "Terminé. {count} versions disponibles.",
+        "analyze_fail": "Analyse échouée : {error}",
+        "need_analyze": "Analysez d’abord une vidéo.",
+        "need_select": "Sélectionnez au moins un format.",
+        "need_ffmpeg": "MP3/fusion nécessite ffmpeg. Veuillez installer ffmpeg.",
+        "loading": "Téléchargement de {count} fichier(s)…",
+        "dl_item": "Téléchargement {i}/{t} : {label}",
+        "finished": "Terminé. Enregistré dans : {path}",
+        "dl_fail": "Échec du téléchargement : {error}",
+        "blocked_403": "YouTube a bloqué ce flux (403). Utilisez « MP4 · Recommandé · jusqu’à 1080p » ou « Meilleure qualité ».",
+        "unknown": "Vidéo inconnue",
+        "formats_count": "{channel}  ·  {mins}:{secs:02d}  ·  {count} formats",
+        "mp4_best": "MP4 · Recommandé · Meilleure qualité (auto-fusion)",
+        "mp4_1080": "MP4 · Recommandé · jusqu’à 1080p (stable)",
+        "mp3_best": "MP3 · Audio (meilleure qualité)",
+        "mp3_192": "MP3 · Audio 192kbps",
+        "video_only": "vidéo seule (+fusion audio)",
+        "video_audio": "Vidéo+Audio",
+    },
+}
+
+
+def resolve_lang() -> str:
+    candidates = [
+        Path(sys.executable).parent / "lang.txt",
+        Path(os.environ.get("LOCALAPPDATA", "")) / "Rageforge" / "YTC" / "lang.txt",
+        resource_path("lang.txt"),
+    ]
+    for path in candidates:
+        try:
+            if path.is_file():
+                code = path.read_text(encoding="utf-8").strip().lower()
+                if code in STRINGS:
+                    return code
+        except Exception:
+            pass
+    return "de"
+
+
+def t(key: str, **kwargs) -> str:
+    lang = getattr(t, "lang", "de")
+    text = STRINGS.get(lang, STRINGS["de"]).get(key) or STRINGS["de"].get(key) or key
+    return text.format(**kwargs) if kwargs else text
+
+
 def find_ffmpeg() -> str | None:
     candidates = [
         Path(os.environ.get("LOCALAPPDATA", "")) / "Microsoft" / "WinGet" / "Links" / "ffmpeg.exe",
@@ -109,6 +241,7 @@ class FormatChoice:
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
+        t.lang = resolve_lang()
         ctk.set_appearance_mode("light")
         ctk.set_default_color_theme("blue")
         self.title(f"{APP_NAME} - {AUTHOR}")
@@ -143,7 +276,7 @@ class App(ctk.CTk):
         ).pack(anchor="w", padx=28, pady=(22, 2))
         ctk.CTkLabel(
             header,
-            text="YouTube-Link einfügen, Formate wählen, mehrere Versionen laden.",
+            text=t("subtitle"),
             font=ctk.CTkFont(family="Segoe UI", size=14),
             text_color=MUTED,
         ).pack(anchor="w", padx=28, pady=(0, 18))
@@ -153,7 +286,7 @@ class App(ctk.CTk):
 
         url_row = ctk.CTkFrame(body, fg_color=SURFACE, corner_radius=14, border_width=1, border_color=BORDER)
         url_row.pack(fill="x", pady=(0, 14))
-        ctk.CTkLabel(url_row, text="YouTube-URL", text_color=TEXT, font=ctk.CTkFont(size=13, weight="bold")).pack(
+        ctk.CTkLabel(url_row, text=t("url_label"), text_color=TEXT, font=ctk.CTkFont(size=13, weight="bold")).pack(
             anchor="w", padx=16, pady=(14, 6)
         )
         entry_row = ctk.CTkFrame(url_row, fg_color="transparent")
@@ -170,7 +303,7 @@ class App(ctk.CTk):
         self.url_entry.pack(side="left", fill="x", expand=True, padx=(0, 10))
         self.analyze_btn = ctk.CTkButton(
             entry_row,
-            text="Analysieren",
+            text=t("analyze"),
             width=140,
             height=44,
             fg_color=PRIMARY,
@@ -190,7 +323,7 @@ class App(ctk.CTk):
         meta_text.pack(side="left", fill="both", expand=True)
         self.title_label = ctk.CTkLabel(
             meta_text,
-            text="Noch kein Video geladen",
+            text=t("no_video"),
             anchor="w",
             justify="left",
             font=ctk.CTkFont(size=18, weight="bold"),
@@ -200,7 +333,7 @@ class App(ctk.CTk):
         self.title_label.pack(anchor="w")
         self.meta_label = ctk.CTkLabel(
             meta_text,
-            text="Füge einen Link ein und klicke auf Analysieren.",
+            text=t("hint"),
             anchor="w",
             justify="left",
             font=ctk.CTkFont(size=13),
@@ -211,12 +344,12 @@ class App(ctk.CTk):
 
         tools = ctk.CTkFrame(body, fg_color="transparent")
         tools.pack(fill="x", pady=(0, 8))
-        ctk.CTkLabel(tools, text="Formate", font=ctk.CTkFont(size=15, weight="bold"), text_color=TEXT).pack(
+        ctk.CTkLabel(tools, text=t("formats"), font=ctk.CTkFont(size=15, weight="bold"), text_color=TEXT).pack(
             side="left"
         )
         self.folder_btn = ctk.CTkButton(
             tools,
-            text="Ordner wählen",
+            text=t("folder"),
             width=120,
             height=32,
             fg_color=SECONDARY,
@@ -227,7 +360,7 @@ class App(ctk.CTk):
         self.folder_btn.pack(side="right")
         self.select_all_btn = ctk.CTkButton(
             tools,
-            text="Alle",
+            text=t("all"),
             width=70,
             height=32,
             fg_color=SURFACE,
@@ -240,7 +373,7 @@ class App(ctk.CTk):
         self.select_all_btn.pack(side="right", padx=(0, 8))
         self.clear_btn = ctk.CTkButton(
             tools,
-            text="Keine",
+            text=t("none"),
             width=70,
             height=32,
             fg_color=SURFACE,
@@ -254,7 +387,7 @@ class App(ctk.CTk):
 
         self.folder_label = ctk.CTkLabel(
             body,
-            text=f"Ziel: {self.out_dir}",
+            text=t("target", path=self.out_dir),
             anchor="w",
             text_color=MUTED,
             font=ctk.CTkFont(size=12),
@@ -265,7 +398,7 @@ class App(ctk.CTk):
         bottom.pack(side="bottom", fill="x")
         self.download_btn = ctk.CTkButton(
             bottom,
-            text="Auswahl herunterladen",
+            text=t("download"),
             height=48,
             fg_color=CTA,
             hover_color="#16A34A",
@@ -277,7 +410,7 @@ class App(ctk.CTk):
         self.progress = ctk.CTkProgressBar(bottom, height=10, progress_color=PRIMARY, fg_color=BORDER)
         self.progress.pack(fill="x", pady=(12, 6))
         self.progress.set(0)
-        self.status = ctk.CTkLabel(bottom, text="Bereit.", anchor="w", text_color=MUTED)
+        self.status = ctk.CTkLabel(bottom, text=t("ready"), anchor="w", text_color=MUTED)
         self.status.pack(fill="x")
 
         self.list_frame = ctk.CTkScrollableFrame(
@@ -291,7 +424,7 @@ class App(ctk.CTk):
         self.list_frame.pack(fill="both", expand=True, pady=(0, 14))
         self.empty_label = ctk.CTkLabel(
             self.list_frame,
-            text="Nach der Analyse erscheinen hier MP4, WEBM, MP3 und M4A.",
+            text=t("empty"),
             text_color=MUTED,
         )
         self.empty_label.pack(pady=40)
@@ -310,7 +443,7 @@ class App(ctk.CTk):
         chosen = filedialog.askdirectory(initialdir=str(self.out_dir))
         if chosen:
             self.out_dir = Path(chosen)
-            self.folder_label.configure(text=f"Ziel: {self.out_dir}")
+            self.folder_label.configure(text=t("target", path=self.out_dir))
 
     def set_all(self, value: bool):
         for choice in self.choices:
@@ -326,10 +459,10 @@ class App(ctk.CTk):
             return
         url = self.url_entry.get().strip()
         if not url:
-            self.set_status("Bitte einen YouTube-Link einfügen.", error=True)
+            self.set_status(t("need_url"), error=True)
             return
         self.set_busy(True)
-        self.set_status("Analysiere Video…")
+        self.set_status(t("analyzing"))
         self.progress.set(0)
         threading.Thread(target=self.analyze_worker, args=(url,), daemon=True).start()
 
@@ -358,7 +491,7 @@ class App(ctk.CTk):
         choices: list[FormatChoice] = [
             FormatChoice(
                 "mp4-best",
-                "MP4 · Empfohlen · Beste Qualität (Auto-Merge)",
+                t("mp4_best"),
                 "best",
                 None,
                 "mp4",
@@ -366,7 +499,7 @@ class App(ctk.CTk):
             ),
             FormatChoice(
                 "mp4-1080",
-                "MP4 · Empfohlen · bis 1080p (stabil)",
+                t("mp4_1080"),
                 "preset",
                 "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080]/b",
                 "mp4",
@@ -374,13 +507,13 @@ class App(ctk.CTk):
             ),
             FormatChoice(
                 "mp3-best",
-                "MP3 · Audio (beste Qualität)",
+                t("mp3_best"),
                 "mp3",
                 None,
                 "mp3",
                 needs_ffmpeg=True,
             ),
-            FormatChoice("mp3-192", "MP3 · Audio 192kbps", "mp3", None, "mp3", needs_ffmpeg=True),
+            FormatChoice("mp3-192", t("mp3_192"), "mp3", None, "mp3", needs_ffmpeg=True),
         ]
 
         video_rows = []
@@ -399,7 +532,7 @@ class App(ctk.CTk):
             fps = fmt.get("fps") or 0
             size = fmt.get("filesize") or fmt.get("filesize_approx")
             has_audio = acodec != "none"
-            tag = "Video+Audio" if has_audio else "nur Video (+Audio Merge)"
+            tag = t("video_audio") if has_audio else t("video_only")
             label = f"MP4 · {height}p" if ext == "mp4" else f"WEBM · {height}p"
             if fps:
                 label += f" · {int(fps)}fps"
@@ -454,12 +587,14 @@ class App(ctk.CTk):
     def apply_analyze(self, info: dict, choices: list[FormatChoice], thumb: Image.Image | None):
         self.info = info
         self.clear_choices()
-        title = info.get("title") or "Unbekanntes Video"
+        title = info.get("title") or t("unknown")
         channel = info.get("uploader") or info.get("channel") or "?"
         duration = info.get("duration") or 0
         mins, secs = divmod(int(duration), 60)
         self.title_label.configure(text=title)
-        self.meta_label.configure(text=f"{channel}  ·  {mins}:{secs:02d}  ·  {len(choices)} Formate")
+        self.meta_label.configure(
+            text=t("formats_count", channel=channel, mins=mins, secs=secs, count=len(choices))
+        )
         if thumb is not None:
             preview = thumb.copy()
             preview.thumbnail((160, 90))
@@ -481,30 +616,30 @@ class App(ctk.CTk):
             box.pack(anchor="w", padx=12, pady=10)
             self.choices.append(choice)
         self.set_busy(False)
-        self.set_status(f"Fertig. {len(choices)} Versionen verfügbar.")
+        self.set_status(t("done_formats", count=len(choices)))
         self.progress.set(0)
 
     def analyze_failed(self, message: str):
         self.set_busy(False)
-        self.set_status(f"Analyse fehlgeschlagen: {message}", error=True)
+        self.set_status(t("analyze_fail", error=message), error=True)
 
     def start_download(self):
         if self.busy:
             return
         if not self.info:
-            self.set_status("Zuerst ein Video analysieren.", error=True)
+            self.set_status(t("need_analyze"), error=True)
             return
         selected = [c for c in self.choices if c.selected.get()]
         if not selected:
-            self.set_status("Mindestens ein Format auswählen.", error=True)
+            self.set_status(t("need_select"), error=True)
             return
         needs_ffmpeg = any(c.needs_ffmpeg for c in selected)
         if needs_ffmpeg and not self.ffmpeg:
-            self.set_status("Für MP3/Merge wird ffmpeg benötigt. Bitte ffmpeg installieren.", error=True)
+            self.set_status(t("need_ffmpeg"), error=True)
             return
         self.set_busy(True)
         self.progress.set(0)
-        self.set_status(f"Lade {len(selected)} Datei(en)…")
+        self.set_status(t("loading", count=len(selected)))
         threading.Thread(target=self.download_worker, args=(selected,), daemon=True).start()
 
     def download_worker(self, selected: list[FormatChoice]):
@@ -513,7 +648,12 @@ class App(ctk.CTk):
         url = self.info.get("webpage_url") or self.info.get("original_url") or self.url_entry.get().strip()
         try:
             for index, choice in enumerate(selected, start=1):
-                self.after(0, lambda i=index, t=total, c=choice: self.set_status(f"Download {i}/{t}: {c.label}"))
+                self.after(
+                    0,
+                    lambda i=index, tot=total, c=choice: self.set_status(
+                        t("dl_item", i=i, t=tot, label=c.label)
+                    ),
+                )
 
                 def hook(d, base=index - 1, count=total, done=index):
                     if d.get("status") == "downloading":
@@ -582,16 +722,13 @@ class App(ctk.CTk):
         except Exception as exc:
             message = str(exc) or repr(exc) or type(exc).__name__
             if "403" in message:
-                message = (
-                    "YouTube hat diesen Stream blockiert (403). "
-                    "Nutze oben „MP4 · Empfohlen · bis 1080p“ oder „Beste Qualität“."
-                )
+                message = t("blocked_403")
             self.after(0, lambda m=message: self.download_failed(m))
 
     def download_done(self):
         self.set_busy(False)
         self.progress.set(1)
-        self.set_status(f"Fertig. Gespeichert in: {self.out_dir}")
+        self.set_status(t("finished", path=self.out_dir))
         try:
             os.startfile(self.out_dir)
         except Exception:
@@ -599,7 +736,7 @@ class App(ctk.CTk):
 
     def download_failed(self, message: str):
         self.set_busy(False)
-        self.set_status(f"Download fehlgeschlagen: {message}", error=True)
+        self.set_status(t("dl_fail", error=message), error=True)
 
 
 if __name__ == "__main__":

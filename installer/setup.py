@@ -73,7 +73,20 @@ class Installer(ctk.CTk):
                 pass
 
         self.target_dir = install_root()
+        self.install_lang = self.resolve_install_lang()
         self._build()
+
+    def resolve_install_lang(self) -> str:
+        name = Path(sys.executable).stem.lower()
+        for code in ("de", "en", "fr"):
+            if name.endswith(f"-{code}") or f"-{code}-" in name:
+                return code
+        lang_file = resource_path("lang.txt")
+        if lang_file.exists():
+            code = lang_file.read_text(encoding="utf-8").strip().lower()
+            if code in {"de", "en", "fr"}:
+                return code
+        return "de"
 
     def _build(self):
         card = ctk.CTkFrame(self, fg_color=SURFACE, corner_radius=24, border_width=1, border_color=LINE)
@@ -154,6 +167,8 @@ class Installer(ctk.CTk):
             icon_dest = self.target_dir / "icon.ico"
             if icon_src.exists():
                 shutil.copy2(icon_src, icon_dest)
+            lang_dest = self.target_dir / "lang.txt"
+            lang_dest.write_text(f"{self.install_lang}\n", encoding="utf-8")
             self.after(0, lambda: self.progress.set(0.45))
 
             desktop = Path.home() / "Desktop"
