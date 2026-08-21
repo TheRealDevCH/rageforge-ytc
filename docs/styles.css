@@ -563,8 +563,19 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   .lane:last-child { border-bottom: 0; }
 
   .hero-copy {
-    max-width: 20ch;
+    width: min(100%, 34ch);
+    max-width: 100%;
     padding-bottom: 8vh;
+  }
+
+  .hero-bleed {
+    background-position: center center;
+  }
+
+  .hero-veil {
+    background:
+      linear-gradient(180deg, rgba(7, 9, 12, 0.55), rgba(7, 9, 12, 0.88)),
+      linear-gradient(90deg, rgba(7, 9, 12, 0.75), rgba(7, 9, 12, 0.35));
   }
 }
 
