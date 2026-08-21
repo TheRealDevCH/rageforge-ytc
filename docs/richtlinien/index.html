@@ -9,50 +9,104 @@
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=21" />
   <style>
-    body{margin:0;background:#07090c;color:#fff;font-family:"Jost",sans-serif}
-    .guide{min-height:100vh;display:grid;grid-template-rows:auto 1fr}
-    .guide-top{padding:1.4rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
-    .guide-top .shell{display:flex;justify-content:space-between;align-items:center}
-    .guide-back{padding:.85rem 1.2rem;border:1px solid rgba(255,255,255,.28);border-radius:16px;color:#fff}
-    .guide-bleed{position:relative;isolation:isolate;padding:clamp(3rem,8vh,6rem) 0 clamp(4rem,10vh,8rem)}
-    .guide-bleed::before{content:"";position:absolute;inset:0;z-index:-1;background:url("assets/atmosphere-field.jpg") center/cover no-repeat}
-    .guide-bleed::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,9,12,.92),rgba(7,9,12,.55) 55%,rgba(7,9,12,.35)),linear-gradient(0deg,rgba(7,9,12,.85),transparent 40%)}
-    .guide h1{margin:0;font-family:"Syne",sans-serif;font-size:clamp(3rem,8vw,6.5rem);letter-spacing:-.05em;line-height:.92;max-width:12ch}
-    .guide-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem;margin-top:2.5rem}
-    .panel{padding:clamp(1.4rem,3vw,2.2rem);border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);min-height:220px}
-    .panel.wide{grid-column:1 / -1;min-height:260px}
-    .panel h2{margin:0 0 1rem;font-family:"Syne",sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.03em}
-    .panel p,.panel li{color:rgba(255,255,255,.78);font-weight:300;line-height:1.55;font-size:1.08rem}
-    .panel ul{margin:0;padding-left:1.2rem}
-    .panel li{margin:.45rem 0}
-    @media (max-width:900px){.guide-grid{grid-template-columns:1fr}}
+    .guide {
+      min-height: 100vh;
+      color: #fff;
+    }
+    .guide-top {
+      padding: 1.4rem 0;
+      position: relative;
+      z-index: 2;
+    }
+    .guide-top .shell {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .guide-bleed {
+      position: relative;
+      isolation: isolate;
+      padding: clamp(3.5rem, 10vh, 7rem) 0 clamp(5rem, 12vh, 8rem);
+    }
+    .guide-bleed::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: url("assets/atmosphere-field.jpg") center / cover no-repeat;
+    }
+    .guide-bleed::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(105deg, rgba(11, 13, 18, 0.92) 0%, rgba(11, 13, 18, 0.7) 48%, rgba(11, 13, 18, 0.42) 100%),
+        linear-gradient(0deg, rgba(11, 13, 18, 0.88), transparent 42%);
+    }
+    .guide h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(3rem, 7.5vw, 5.8rem);
+      letter-spacing: -0.05em;
+      line-height: 0.92;
+      max-width: 11ch;
+      font-weight: 600;
+    }
+    .guide-stack {
+      margin-top: 3.2rem;
+      display: grid;
+      gap: clamp(2rem, 5vh, 3.2rem);
+      max-width: 58rem;
+    }
+    .guide-block h2 {
+      margin: 0 0 0.7rem;
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.6vw, 2rem);
+      letter-spacing: -0.03em;
+      font-weight: 600;
+    }
+    .guide-block p,
+    .guide-block li {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 300;
+      line-height: 1.6;
+      font-size: 1.08rem;
+      max-width: 54ch;
+    }
+    .guide-block ul {
+      margin: 0;
+      padding-left: 1.15rem;
+    }
+    .guide-block li { margin: 0.4rem 0; }
   </style>
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
   <div class="guide">
     <header class="guide-top">
       <div class="shell">
-        <a class="nav-brand" href="./" style="display:inline-flex;gap:.9rem;align-items:center;font-family:Syne,sans-serif;font-weight:700;color:#fff;text-decoration:none">
-          <img src="assets/icon.png" width="42" height="42" alt="" style="border-radius:12px" />
-          <span>Rageforge YTC</span>
+        <a class="nav-brand" href="./">
+          <img src="assets/icon.png" width="36" height="36" alt="" />
+          <span>Rageforge</span>
         </a>
-        <a class="guide-back" href="./">Zurück</a>
+        <a class="nav-go" href="./">Zurück</a>
       </div>
     </header>
 
     <section class="guide-bleed">
       <div class="shell">
-        <p class="eyebrow light" style="margin:0 0 1rem;font-family:Syne,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9ec9ff;font-weight:600">Richtlinien</p>
         <h1>Frei. Klar. Nicht zum Verkauf.</h1>
-        <div class="guide-grid">
-          <article class="panel wide">
+        <div class="guide-stack">
+          <article class="guide-block">
             <h2>Kostenlos für alle</h2>
-            <p>Rageforge YTC ist und bleibt gratis. Es ist nicht dazu gedacht, verkauft, vermietet oder hinter eine Bezahlschranke gestellt zu werden. Wer das Programm weitergibt, gibt es weiter wie es ist: frei und ohne Preis.</p>
+            <p>Rageforge YTC ist und bleibt gratis. Nicht verkaufen, nicht vermieten, nicht hinter eine Bezahlschranke stellen. Wer es weitergibt, gibt es weiter wie es ist: frei und ohne Preis.</p>
           </article>
-          <article class="panel">
+          <article class="guide-block">
             <h2>Kein Verkauf</h2>
             <ul>
               <li>Nicht als Produkt verkaufen</li>
@@ -61,26 +115,22 @@
               <li>Keine „Premium-Version“ erfinden, die dasselbe ist</li>
             </ul>
           </article>
-          <article class="panel">
+          <article class="guide-block">
             <h2>Fair teilen</h2>
             <ul>
-              <li>Du darfst den Link zur offiziellen Seite teilen</li>
-              <li>Du darfst anderen helfen, es zu installieren</li>
-              <li>Der Installer soll von der offiziellen Quelle kommen</li>
+              <li>Den Link zur offiziellen Seite teilen</li>
+              <li>Anderen bei der Installation helfen</li>
+              <li>Installer nur von der offiziellen Quelle</li>
               <li>Name und Autor Rageforge bleiben sichtbar</li>
             </ul>
           </article>
-          <article class="panel">
-            <h2>Was das Projekt ist</h2>
-            <p>Ein Werkzeug für den Alltag. Ein Link, Formate, Download. Gebaut von Rageforge. Gedacht für Menschen, nicht für einen Shop.</p>
+          <article class="guide-block">
+            <h2>Was das ist</h2>
+            <p>Ein Werkzeug für den Alltag. Ein Link, Formate, Download. Gebaut von Rageforge. Für Menschen, nicht für einen Shop.</p>
           </article>
-          <article class="panel">
-            <h2>Was wir erwarten</h2>
-            <p>Respekt vor der Idee: frei bleiben. Wenn du das Projekt magst, erzähl davon. Verkauf es nicht. Verpacke es nicht als Ware.</p>
-          </article>
-          <article class="panel wide">
+          <article class="guide-block">
             <h2>Kurz gesagt</h2>
-            <p>Rageforge YTC ist nicht zum Verkauf gedacht und soll für alle gratis bleiben. Punkt. Wer es anders darstellt, handelt gegen diese Richtlinien. Die offizielle Quelle ist die GitHub-Seite von TheRealDevCH.</p>
+            <p>Rageforge YTC ist nicht zum Verkauf gedacht und soll für alle gratis bleiben. Die offizielle Quelle ist die GitHub-Seite von TheRealDevCH.</p>
           </article>
         </div>
       </div>

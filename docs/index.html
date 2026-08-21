@@ -4,47 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rageforge YTC</title>
-  <meta name="description" content="Rageforge YTC — der YouTube Converter für Windows." />
+  <meta name="description" content="Rageforge YTC — YouTube Converter für Windows." />
   <meta name="author" content="Rageforge" />
   <base href="/rageforge-ytc/" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20" />
-  <style>
-    :root{--ink:#0b0d10;--fog:#8b939e;--glass:rgba(255,255,255,.58);--line:rgba(255,255,255,.28);--blue:#0a84ff;--paper:#eef2f6;--display:"Syne",sans-serif;--body:"Jost",sans-serif}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#07090c;color:var(--ink);font-family:var(--body);overflow-x:hidden}
-    a{color:inherit;text-decoration:none}button{font:inherit;border:0;background:none;color:inherit;cursor:pointer}
-    .hero{position:relative;min-height:100vh;min-height:100dvh;display:grid;align-items:end;justify-items:start;isolation:isolate;color:#fff}
-    .hero-bleed{position:absolute;inset:0;z-index:-2;background:#0b1220 78% center/cover no-repeat}
-    .hero-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(7,9,12,.94) 0%,rgba(7,9,12,.78) 32%,rgba(7,9,12,.3) 56%,rgba(7,9,12,.06) 100%),linear-gradient(0deg,rgba(7,9,12,.84),transparent 48%)}
-    .shell{width:min(1440px,calc(100% - 4rem));margin:0 auto}
-    .nav{position:absolute;top:0;left:0;right:0;z-index:5;padding:1.6rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-    .nav-brand{display:inline-flex;gap:.9rem;align-items:center;font-family:var(--display);font-weight:700;letter-spacing:-.03em}
-    .nav-brand img{width:42px;height:42px;border-radius:12px}
-    .nav-actions{display:flex;align-items:center;gap:.7rem}
-    .nav-go,.btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:0 1.55rem;border-radius:16px;font-family:var(--display);font-weight:700;cursor:pointer;white-space:nowrap}
-    .nav-go{min-height:auto;padding:.85rem 1.2rem;border:1px solid var(--line);background:rgba(255,255,255,.08);backdrop-filter:blur(16px);color:#fff}
-    .hero-copy{width:min(520px,44vw);max-width:100%;padding:0 0 12vh;justify-self:start;text-align:left}
-    .hero-copy h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(3.2rem,6.5vw,5.8rem);line-height:.92;letter-spacing:-.06em;max-width:9ch}
-    .hero-copy p{margin:1.4rem 0 0;font-size:clamp(1.15rem,2vw,1.4rem);color:rgba(255,255,255,.78);max-width:26ch;font-weight:300}
-    .cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.8rem}
-    .btn-solid{background:#fff;color:#0b0d10}.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);backdrop-filter:blur(12px)}
-    .drop{position:relative}
-    .drop-panel{position:absolute;top:calc(100% + .45rem);left:0;min-width:180px;padding:.45rem;border-radius:16px;background:rgba(12,14,18,.92);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px);display:none;z-index:20}
-    .drop.is-open .drop-panel,.drop:hover .drop-panel,.drop:focus-within .drop-panel{display:grid;gap:.25rem}
-    .drop-panel a{display:block;padding:.75rem .9rem;border-radius:12px;color:#fff;font-family:var(--display);font-weight:600}
-    .drop-panel a:hover,.drop-panel a:focus-visible{background:rgba(255,255,255,.1)}
-    .drop-end .drop-panel{left:auto;right:0}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=21" />
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
+
   <header class="hero" id="top">
     <div class="hero-bleed" style="background-image:url('assets/hero-plane.jpg')"></div>
     <div class="hero-veil"></div>
     <div class="shell nav">
-      <a class="nav-brand" href="./"><img src="assets/icon.png" alt="" /><span>Rageforge YTC</span></a>
+      <a class="nav-brand" href="./">
+        <img src="assets/icon.png" alt="" width="36" height="36" />
+        <span>Rageforge</span>
+      </a>
       <div class="nav-actions">
         <div class="drop drop-end" data-drop>
           <button class="nav-go" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
@@ -59,7 +38,7 @@
     </div>
     <div class="shell hero-copy">
       <h1>Rageforge<br />YTC</h1>
-      <p>Link einfügen, Formate wählen, mehrere Versionen laden.</p>
+      <p>Link rein. Formate wählen. Mehrere Versionen laden.</p>
       <div class="cta">
         <div class="drop" data-drop>
           <button class="btn btn-solid" type="button" aria-expanded="false" aria-haspopup="true">Installer</button>
@@ -76,9 +55,7 @@
   <main>
     <section class="chapter experience" id="experience">
       <div class="shell">
-        <p class="eyebrow">Rageforge</p>
-        <h2>Formate antippen.</h2>
-        <p class="chapter-lead">Grosse Kacheln, direkte Reaktion — genau wie in der App.</p>
+        <h2>Formate.</h2>
       </div>
       <div class="orbit shell" id="orbit">
         <button class="orb is-live" type="button" data-fmt="MP4" aria-pressed="true"><span>MP4</span><em>Video</em></button>
@@ -86,57 +63,54 @@
         <button class="orb is-live" type="button" data-fmt="MP3" aria-pressed="true"><span>MP3</span><em>Audio</em></button>
         <button class="orb" type="button" data-fmt="M4A" aria-pressed="false"><span>M4A</span><em>Audio</em></button>
       </div>
-      <p class="orbit-echo shell" id="orbitEcho">Auswahl: MP4 · MP3</p>
+      <p class="orbit-echo shell" id="orbitEcho">MP4 · MP3</p>
     </section>
 
     <section class="chapter ritual" id="ritual">
       <div class="shell ritual-head">
-        <p class="eyebrow">Ablauf</p>
         <h2>Drei Schritte.</h2>
       </div>
       <div class="lanes">
         <button class="lane is-on" type="button" data-lane="0">
           <span class="lane-index">01</span>
           <span class="lane-title">Link</span>
-          <span class="lane-copy">YouTube-Adresse einfügen. Mehr brauchst du nicht.</span>
+          <span class="lane-copy">YouTube-Adresse einfügen.</span>
         </button>
         <button class="lane" type="button" data-lane="1">
           <span class="lane-index">02</span>
           <span class="lane-title">Auswahl</span>
-          <span class="lane-copy">MP4, WEBM, MP3 oder M4A — auch mehrere auf einmal.</span>
+          <span class="lane-copy">Ein Format oder mehrere.</span>
         </button>
         <button class="lane" type="button" data-lane="2">
           <span class="lane-index">03</span>
           <span class="lane-title">Fertig</span>
-          <span class="lane-copy">Setup installiert nur die EXE. Fertig.</span>
+          <span class="lane-copy">Setup. Fertig.</span>
         </button>
       </div>
       <div class="lens shell" aria-live="polite">
         <article class="lens-pane is-shown" data-pane="0">
-          <h3>Einfach den Link rein.</h3>
-          <div class="glass-field">
-            <span>https://www.youtube.com/watch?v=…</span>
-            <strong>Analysieren</strong>
-          </div>
+          <h3>Adresse rein.</h3>
+          <p class="lens-line">https://www.youtube.com/watch?v=…</p>
         </article>
         <article class="lens-pane" data-pane="1">
-          <h3>Mehrere Versionen auf einmal.</h3>
-          <div class="stack-visual" aria-hidden="true">
-            <i></i><i></i><i></i>
-          </div>
+          <h3>Mehrere auf einmal.</h3>
+          <p class="lens-line">MP4 · WEBM · MP3 · M4A</p>
         </article>
         <article class="lens-pane" data-pane="2">
-          <h3>Ein Setup. Mehr nicht.</h3>
-          <a class="slab" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
-            <span>Windows</span>
-            <b>RageforgeYTC-Setup.exe</b>
-            <em>Jetzt laden</em>
-          </a>
+          <h3>Ein Setup.</h3>
+          <div class="drop" data-drop>
+            <button class="btn btn-light" type="button" aria-expanded="false" aria-haspopup="true">Installer wählen</button>
+            <div class="drop-panel" role="menu">
+              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-de.exe">Deutsch</a>
+              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-en.exe">English</a>
+              <a role="menuitem" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup-fr.exe">Français</a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
   </main>
 
-  <script src="site.js?v=20"></script>
+  <script src="site.js?v=21"></script>
 </body>
 </html>

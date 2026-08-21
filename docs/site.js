@@ -8,7 +8,7 @@
   const syncOrbit = () => {
     const picked = orbs.filter((orb) => orb.classList.contains("is-live")).map((orb) => orb.dataset.fmt);
     if (echo) {
-      echo.textContent = picked.length ? `Auswahl: ${picked.join(" · ")}` : "Tippe die grossen Felder an.";
+      echo.textContent = picked.length ? picked.join(" · ") : "Nichts gewählt.";
     }
   };
 
