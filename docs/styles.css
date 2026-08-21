@@ -105,7 +105,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .hero-copy {
   padding: 0 0 12vh;
-  max-width: 16ch;
+  max-width: 20ch;
   animation: rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -143,6 +143,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-family: var(--display);
   font-weight: 700;
   cursor: pointer;
+  white-space: nowrap;
   transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
 }
 

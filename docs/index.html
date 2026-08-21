@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
   <style>
     :root{--ink:#0b0d10;--fog:#8b939e;--glass:rgba(255,255,255,.58);--line:rgba(255,255,255,.28);--blue:#0a84ff;--paper:#eef2f6;--display:"Syne",sans-serif;--body:"Jost",sans-serif}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#07090c;color:var(--ink);font-family:var(--body);overflow-x:hidden}
@@ -24,11 +24,11 @@
     .nav-brand{display:inline-flex;gap:.9rem;align-items:center;font-family:var(--display);font-weight:700;letter-spacing:-.03em}
     .nav-brand img{width:42px;height:42px;border-radius:12px}
     .nav-go{padding:.85rem 1.2rem;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.08);backdrop-filter:blur(16px);color:#fff}
-    .hero-copy{padding:0 0 12vh;max-width:16ch}
+    .hero-copy{padding:0 0 12vh;max-width:20ch}
     .hero-copy h1{margin:0;font-family:var(--display);font-weight:800;font-size:clamp(4.2rem,12vw,9.5rem);line-height:.86;letter-spacing:-.06em}
-    .hero-copy p{margin:1.4rem 0 0;font-size:clamp(1.15rem,2vw,1.45rem);color:rgba(255,255,255,.78);max-width:22ch;font-weight:300}
+    .hero-copy p{margin:1.4rem 0 0;font-size:clamp(1.15rem,2vw,1.45rem);color:rgba(255,255,255,.78);max-width:26ch;font-weight:300}
     .cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.8rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:0 1.55rem;border-radius:16px;font-family:var(--display);font-weight:700;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:3.5rem;padding:0 1.55rem;border-radius:16px;font-family:var(--display);font-weight:700;cursor:pointer;white-space:nowrap}
     .btn-solid{background:#fff;color:#0b0d10}.btn-ghost{color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.06);backdrop-filter:blur(12px)}
   </style>
 </head>
@@ -42,9 +42,9 @@
     </div>
     <div class="shell hero-copy">
       <h1>Rageforge YTC</h1>
-      <p>Ein Link. Viele Formate. Ein Werkzeug, das sich wie Produkt anfühlt.</p>
+      <p>Link einfügen, Formate wählen, mehrere Versionen laden.</p>
       <div class="cta">
-        <a class="btn btn-solid" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Installer holen</a>
+        <a class="btn btn-solid" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Setup laden</a>
         <a class="btn btn-ghost" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC.exe">Nur EXE</a>
       </div>
     </div>
@@ -54,8 +54,8 @@
     <section class="chapter experience" id="experience">
       <div class="shell">
         <p class="eyebrow">Rageforge</p>
-        <h2>Berühre die Formate.</h2>
-        <p class="chapter-lead">Grosse Flächen. Direkte Reaktion. Wie in der App — nur hier im Browser.</p>
+        <h2>Formate antippen.</h2>
+        <p class="chapter-lead">Grosse Kacheln, direkte Reaktion — genau wie in der App.</p>
       </div>
       <div class="orbit shell" id="orbit">
         <button class="orb is-live" type="button" data-fmt="MP4" aria-pressed="true"><span>MP4</span><em>Video</em></button>
@@ -69,41 +69,41 @@
     <section class="chapter ritual" id="ritual">
       <div class="shell ritual-head">
         <p class="eyebrow">Ablauf</p>
-        <h2>Drei Bewegungen.</h2>
+        <h2>Drei Schritte.</h2>
       </div>
       <div class="lanes">
         <button class="lane is-on" type="button" data-lane="0">
           <span class="lane-index">01</span>
           <span class="lane-title">Link</span>
-          <span class="lane-copy">Du fügst ein. Sonst nichts.</span>
+          <span class="lane-copy">YouTube-Adresse einfügen. Mehr brauchst du nicht.</span>
         </button>
         <button class="lane" type="button" data-lane="1">
           <span class="lane-index">02</span>
           <span class="lane-title">Auswahl</span>
-          <span class="lane-copy">Mehrere Versionen. Gleichzeitig.</span>
+          <span class="lane-copy">MP4, WEBM, MP3 oder M4A — auch mehrere auf einmal.</span>
         </button>
         <button class="lane" type="button" data-lane="2">
           <span class="lane-index">03</span>
           <span class="lane-title">Fertig</span>
-          <span class="lane-copy">Installer. Nur die EXE.</span>
+          <span class="lane-copy">Setup installiert nur die EXE. Fertig.</span>
         </button>
       </div>
       <div class="lens shell" aria-live="polite">
         <article class="lens-pane is-shown" data-pane="0">
-          <h3>Dein Link trägt alles.</h3>
+          <h3>Einfach den Link rein.</h3>
           <div class="glass-field">
             <span>https://www.youtube.com/watch?v=…</span>
             <strong>Analysieren</strong>
           </div>
         </article>
         <article class="lens-pane" data-pane="1">
-          <h3>Versionen stapeln sich.</h3>
+          <h3>Mehrere Versionen auf einmal.</h3>
           <div class="stack-visual" aria-hidden="true">
             <i></i><i></i><i></i>
           </div>
         </article>
         <article class="lens-pane" data-pane="2">
-          <h3>Ein Setup. Ein Ziel.</h3>
+          <h3>Ein Setup. Mehr nicht.</h3>
           <a class="slab" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
             <span>Windows</span>
             <b>RageforgeYTC-Setup.exe</b>
@@ -117,10 +117,10 @@
       <div class="download-bleed" style="background-image:url('assets/atmosphere-field.jpg')"></div>
       <div class="download-veil"></div>
       <div class="shell download-copy">
-        <p class="eyebrow light">Gratis</p>
-        <h2>Hol Rageforge YTC.</h2>
-        <p>Windows. Sofort. Autor Rageforge.</p>
-        <a class="btn btn-solid btn-xl" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Gratis installieren</a>
+        <p class="eyebrow light">Kostenlos</p>
+        <h2>Rageforge YTC laden.</h2>
+        <p>Für Windows. Sofort einsatzbereit. Von Rageforge.</p>
+        <a class="btn btn-solid btn-xl" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Kostenlos installieren</a>
       </div>
     </section>
   </main>
@@ -131,6 +131,6 @@
     <a href="wiedersehen/">Wiedersehen</a>
   </footer>
 
-  <script src="site.js?v=11"></script>
+  <script src="site.js?v=12"></script>
 </body>
 </html>
