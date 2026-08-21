@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.build/
+build/
+dist/
+installer/build/
+installer/dist/
+installer/RageforgeYTC.exe
+*.spec
+.venv/
+venv/
+Downloads/
