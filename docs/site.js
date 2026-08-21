@@ -1,66 +1,32 @@
 (() => {
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const spotlight = document.getElementById("spotlight");
-  const steps = Array.from(document.querySelectorAll(".flow-step"));
-  const panels = Array.from(document.querySelectorAll(".stage-panel"));
-  const formatHits = Array.from(document.querySelectorAll(".format-hit"));
-  const formatEcho = document.getElementById("formatEcho");
+  const orbs = Array.from(document.querySelectorAll(".orb"));
+  const echo = document.getElementById("orbitEcho");
+  const lanes = Array.from(document.querySelectorAll(".lane"));
+  const panes = Array.from(document.querySelectorAll(".lens-pane"));
 
-  const setStep = (index) => {
-    steps.forEach((step, i) => {
-      const on = i === index;
-      step.classList.toggle("is-active", on);
-      step.setAttribute("aria-pressed", on ? "true" : "false");
-    });
-    panels.forEach((panel) => {
-      panel.classList.toggle("is-visible", Number(panel.dataset.panel) === index);
-    });
-  };
-
-  steps.forEach((step) => {
-    step.addEventListener("click", () => setStep(Number(step.dataset.step)));
-  });
-
-  const syncFormats = () => {
-    const selected = formatHits
-      .filter((hit) => hit.classList.contains("is-on"))
-      .map((hit) => hit.dataset.format);
-    if (formatEcho) {
-      formatEcho.textContent = selected.length
-        ? `Gewählt: ${selected.join(", ")}`
-        : "Noch nichts gewählt — tippe die Formate an.";
+  const syncOrbit = () => {
+    const picked = orbs.filter((orb) => orb.classList.contains("is-live")).map((orb) => orb.dataset.fmt);
+    if (echo) {
+      echo.textContent = picked.length ? `Auswahl: ${picked.join(" · ")}` : "Tippe die grossen Felder an.";
     }
   };
 
-  formatHits.forEach((hit) => {
-    hit.addEventListener("click", () => {
-      hit.classList.toggle("is-on");
-      hit.setAttribute("aria-pressed", hit.classList.contains("is-on") ? "true" : "false");
-      syncFormats();
+  orbs.forEach((orb) => {
+    orb.addEventListener("click", () => {
+      orb.classList.toggle("is-live");
+      orb.setAttribute("aria-pressed", orb.classList.contains("is-live") ? "true" : "false");
+      syncOrbit();
     });
   });
 
-  if (!reduce && spotlight) {
-    window.addEventListener("pointermove", (event) => {
-      spotlight.style.left = `${event.clientX}px`;
-      spotlight.style.top = `${event.clientY}px`;
-    });
-  }
+  const showLane = (index) => {
+    lanes.forEach((lane, i) => lane.classList.toggle("is-on", i === index));
+    panes.forEach((pane) => pane.classList.toggle("is-shown", Number(pane.dataset.pane) === index));
+  };
 
-  if (!reduce && "IntersectionObserver" in window) {
-    const targets = document.querySelectorAll(".story-head, .flow, .stage-board, .promise-rail, .finale-inner");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-in");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.12 }
-    );
-    targets.forEach((el) => observer.observe(el));
-  }
+  lanes.forEach((lane) => {
+    lane.addEventListener("click", () => showLane(Number(lane.dataset.lane)));
+  });
 
-  syncFormats();
+  syncOrbit();
 })();
