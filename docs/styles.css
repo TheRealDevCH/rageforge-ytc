@@ -485,6 +485,15 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 300;
 }
 
+.free-note {
+  max-width: 34ch;
+  margin: 0.4rem 0 0.2rem !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-size: 1.05rem !important;
+  font-weight: 400 !important;
+  line-height: 1.45;
+}
+
 .foot {
   display: flex;
   flex-wrap: wrap;
