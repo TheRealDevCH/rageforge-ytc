@@ -9,94 +9,152 @@
   <link rel="icon" href="assets/icon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="world" aria-hidden="true">
+    <div class="world-glow"></div>
+    <div class="world-grid"></div>
+    <div class="spotlight" id="spotlight"></div>
+  </div>
 
   <header class="topbar">
-    <a class="brand" href="./">
-      <img src="assets/icon.png" width="36" height="36" alt="" />
-      <span>Rageforge YTC</span>
+    <a class="mark" href="./" aria-label="Rageforge YTC Startseite">
+      <img src="assets/icon.png" width="44" height="44" alt="" />
+      <strong>Rageforge YTC</strong>
     </a>
-    <nav>
-      <a href="#features">Funktionen</a>
-      <a class="nav-cta" href="#download">Download</a>
-    </nav>
+    <a class="top-link" href="#holen">Download</a>
   </header>
 
   <main>
     <section class="hero">
-      <p class="eyebrow">Rageforge</p>
-      <h1>Rageforge YTC</h1>
-      <p class="lede">YouTube-Link einfügen. Formate wählen. Mehrere Versionen laden — kostenlos für Windows.</p>
-      <div class="cta-row" id="download">
-        <a class="btn-primary" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l4-4m-4 4l-4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Installer herunterladen
-        </a>
-        <a class="btn-ghost" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC.exe">Nur EXE</a>
-      </div>
-      <p class="meta">Windows · Gratis · Autor Rageforge</p>
-    </section>
-
-    <section class="stage" aria-label="App-Vorschau">
-      <div class="device">
-        <div class="device-bar">
-          <span></span><span></span><span></span>
+      <div class="hero-copy">
+        <p class="brand-signal">Rageforge</p>
+        <h1>Rageforge YTC</h1>
+        <p class="lede">Ein Link. Viele Formate. Fertig auf dem Desktop.</p>
+        <div class="cta-group" id="holen">
+          <a class="btn-main" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
+            Installer holen
+          </a>
+          <a class="btn-soft" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC.exe">
+            Nur EXE
+          </a>
         </div>
-        <div class="device-body">
-          <div class="mock-title">Rageforge YTC</div>
-          <div class="mock-line wide"></div>
-          <div class="mock-line"></div>
-          <div class="mock-row">
-            <div class="mock-thumb"></div>
-            <div class="mock-stack">
-              <div class="mock-line wide"></div>
-              <div class="mock-line short"></div>
-            </div>
+      </div>
+      <div class="hero-plane" aria-hidden="true">
+        <div class="plane-wash"></div>
+        <div class="plane-window">
+          <div class="plane-chrome">
+            <i></i><i></i><i></i>
+            <span>Rageforge YTC</span>
           </div>
-          <div class="mock-chip">MP4 · Empfohlen</div>
-          <div class="mock-chip">MP3 · Audio</div>
-          <div class="mock-cta"></div>
+          <div class="plane-screen">
+            <div class="plane-brand">Rageforge YTC</div>
+            <div class="plane-bar"></div>
+            <div class="plane-media"></div>
+            <div class="plane-tracks">
+              <span class="on">MP4</span>
+              <span>WEBM</span>
+              <span class="on">MP3</span>
+              <span>M4A</span>
+            </div>
+            <div class="plane-action"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="features" id="features">
-      <h2>Alles, was du brauchst.</h2>
-      <p class="section-copy">Ein klarer Workflow. Kein Ballast.</p>
-      <div class="bento">
-        <article class="tile tile-lg">
-          <h3>Mehrere Formate</h3>
-          <p>MP4, WEBM, MP3 und M4A in einem Durchgang auswählen und laden.</p>
-        </article>
-        <article class="tile">
-          <h3>Ein Klick</h3>
-          <p>Link einfügen, analysieren, fertig.</p>
-        </article>
-        <article class="tile">
-          <h3>Installer</h3>
-          <p>Nur die EXE. Sauber auf dem Desktop.</p>
-        </article>
-        <article class="tile tile-wide">
-          <h3>Kostenlos</h3>
-          <p>Kein Abo. Kein Login. Direkt von GitHub.</p>
-        </article>
+    <section class="story" id="story">
+      <div class="story-head">
+        <h2>So fühlt sich der Ablauf an.</h2>
+        <p>Tippe die grossen Felder an. Sie reagieren wie in der App.</p>
+      </div>
+
+      <div class="flow" role="list">
+        <button class="flow-step is-active" type="button" role="listitem" data-step="0" aria-pressed="true">
+          <span class="flow-num">01</span>
+          <span class="flow-title">Link einfügen</span>
+          <span class="flow-text">Einfach die YouTube-Adresse rein. Mehr brauchst du nicht.</span>
+        </button>
+        <button class="flow-step" type="button" role="listitem" data-step="1" aria-pressed="false">
+          <span class="flow-num">02</span>
+          <span class="flow-title">Formate wählen</span>
+          <span class="flow-text">MP4, WEBM, MP3, M4A — so viele Versionen wie du willst.</span>
+        </button>
+        <button class="flow-step" type="button" role="listitem" data-step="2" aria-pressed="false">
+          <span class="flow-num">03</span>
+          <span class="flow-title">Laden &amp; fertig</span>
+          <span class="flow-text">Der Installer legt nur die EXE ab. Sauber und klar.</span>
+        </button>
+      </div>
+
+      <div class="stage-board" aria-live="polite">
+        <div class="stage-panel is-visible" data-panel="0">
+          <p class="stage-kicker">Schritt</p>
+          <h3>Dein Link ist genug.</h3>
+          <div class="fake-url" tabindex="0">
+            <span>https://www.youtube.com/watch?v=…</span>
+            <em>Analysieren</em>
+          </div>
+        </div>
+        <div class="stage-panel" data-panel="1">
+          <p class="stage-kicker">Auswahl</p>
+          <h3>Mehrere Versionen. Ein Klick.</h3>
+          <div class="format-wall" id="formatWall">
+            <button type="button" class="format-hit is-on" data-format="MP4" aria-pressed="true">MP4</button>
+            <button type="button" class="format-hit" data-format="WEBM" aria-pressed="false">WEBM</button>
+            <button type="button" class="format-hit is-on" data-format="MP3" aria-pressed="true">MP3</button>
+            <button type="button" class="format-hit" data-format="M4A" aria-pressed="false">M4A</button>
+          </div>
+          <p class="format-echo" id="formatEcho">Gewählt: MP4, MP3</p>
+        </div>
+        <div class="stage-panel" data-panel="2">
+          <p class="stage-kicker">Ziel</p>
+          <h3>Nur die EXE. Mehr nicht.</h3>
+          <a class="mega-download" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">
+            <span class="mega-label">Windows Installer</span>
+            <span class="mega-name">RageforgeYTC-Setup.exe</span>
+            <span class="mega-go">Jetzt laden</span>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="download-band">
-      <h2>Bereit zum Start.</h2>
-      <p>Installationsmanager lädt nur Rageforge YTC — nichts anderes.</p>
-      <a class="btn-primary btn-large" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Gratis installieren</a>
+    <section class="promise">
+      <h2>Gross genug für den Alltag.</h2>
+      <div class="promise-rail">
+        <button type="button" class="promise-block" data-tone="a">
+          <strong>Gratis</strong>
+          <span>Kein Abo. Kein Account. Einfach nutzen.</span>
+        </button>
+        <button type="button" class="promise-block" data-tone="b">
+          <strong>Klar</strong>
+          <span>Wenige Schritte. Keine Ablenkung.</span>
+        </button>
+        <button type="button" class="promise-block" data-tone="c">
+          <strong>Dein Desktop</strong>
+          <span>Installer setzt die App hin, wo du sie brauchst.</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="finale">
+      <div class="finale-inner">
+        <p class="brand-signal">Rageforge</p>
+        <h2>Hol dir Rageforge YTC.</h2>
+        <p>Windows. Kostenlos. Von TheRealDevCH auf GitHub.</p>
+        <a class="btn-main btn-xl" href="https://github.com/TheRealDevCH/rageforge-ytc/releases/latest/download/RageforgeYTC-Setup.exe">Gratis installieren</a>
+      </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="foot">
     <span>Rageforge</span>
     <a href="https://github.com/TheRealDevCH/rageforge-ytc">GitHub</a>
+    <a href="wiedersehen/">Wiedersehen</a>
   </footer>
+
+  <script src="site.js"></script>
 </body>
 </html>
